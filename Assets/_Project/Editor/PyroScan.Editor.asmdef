@@ -1,0 +1,28 @@
+{
+    "name": "PyroScan.Editor",
+    "rootNamespace": "PyroScan",
+    "references": [
+        "PyroScan.Runtime",
+        "Unity.XR.Interaction.Toolkit",
+        "Unity.XR.CoreUtils"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "PYROSCAN_XRI"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.xr.interaction.toolkit",
+            "expression": "3.0.0",
+            "define": "PYROSCAN_XRI"
+        }
+    ],
+    "noEngineReferences": false
+}

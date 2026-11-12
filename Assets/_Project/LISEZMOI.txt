@@ -1,0 +1,9 @@
+PyroScan - dossier du projet
+
+Scripts/   scripts de jeu (DroneMover, TacticalTable, MiniIcon, LightFlicker)
+Editor/    SceneBuilder : menu PyroScan > Construire la scène Rendu 1
+Scenes/    Rendu1_Poste.unity (créée par le menu ci-dessus)
+Materials/ Prefabs/   créés automatiquement par le menu
+
+Installation automatique : Assets/PyroScanSetup/Editor/PyroScanSetup.cs
+(installe XR Interaction Toolkit + samples, puis construit la scène une fois).
