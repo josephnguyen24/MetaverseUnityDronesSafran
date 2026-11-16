@@ -23,3 +23,10 @@
 
 # Script local de publication
 push_github.bat
+
+# Dossiers locaux (captures, builds de test, cache)
+/Captures/
+/Yes/
+.utmp/
+/Assets/_Recovery/
+/Assets/_Recovery.meta

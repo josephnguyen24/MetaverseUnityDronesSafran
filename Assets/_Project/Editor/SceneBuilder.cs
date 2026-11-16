@@ -32,7 +32,7 @@ namespace PyroScan.EditorTools
         static readonly Vector3 TableCenter = new Vector3(0f, 0.45f, 1.0f);
         const float TableHeight = 0.9f;
 
-        static readonly Color FogColor = new Color(0.42f, 0.33f, 0.27f);
+        internal static readonly Color FogColor = new Color(0.46f, 0.42f, 0.37f); // brume légère de fumée (moins orangée qu'avant)
 
         [MenuItem("PyroScan/Construire la scène Rendu 1", priority = 1)]
         public static void Build()
@@ -75,11 +75,11 @@ namespace PyroScan.EditorTools
         }
 
         // ---------------------------------------------------------------- Ambiance
-        static void SetupAmbiance()
+        internal static void SetupAmbiance()
         {
             RenderSettings.skybox = null;
             RenderSettings.ambientMode = AmbientMode.Flat;
-            RenderSettings.ambientLight = new Color(0.32f, 0.24f, 0.2f);
+            RenderSettings.ambientLight = new Color(0.31f, 0.30f, 0.27f);
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.Linear;
             RenderSettings.fogColor = FogColor;
@@ -89,8 +89,8 @@ namespace PyroScan.EditorTools
             // Soleil bas, orangé, filtré par la fumée, face au joueur (contre-jour sur la vallée).
             var sun = new GameObject("Soleil (filtré par la fumée)").AddComponent<Light>();
             sun.type = LightType.Directional;
-            sun.color = new Color(1f, 0.6f, 0.35f);
-            sun.intensity = 0.8f;
+            sun.color = new Color(1f, 0.82f, 0.62f);
+            sun.intensity = 0.95f;
             sun.shadows = LightShadows.Soft;
             sun.transform.rotation = Quaternion.Euler(18f, 200f, 0f);
         }
@@ -302,7 +302,7 @@ namespace PyroScan.EditorTools
         }
 
         // ---------------------------------------------------------------- XR
-        static bool SetupXR()
+        internal static bool SetupXR()
         {
             GameObject rigPrefab = FindPrefab("XR Interaction Setup") ?? FindPrefab("XR Origin (XR Rig)");
             if (rigPrefab != null)
@@ -335,7 +335,7 @@ namespace PyroScan.EditorTools
             return rigPrefab != null;
         }
 
-        static GameObject FindPrefab(string exactName)
+        internal static GameObject FindPrefab(string exactName)
         {
             string path = AssetDatabase.FindAssets(exactName + " t:Prefab")
                 .Select(AssetDatabase.GUIDToAssetPath)
@@ -346,7 +346,7 @@ namespace PyroScan.EditorTools
         }
 
         // ---------------------------------------------------------------- Outils
-        static RenderTexture GetOrCreateRenderTexture()
+        internal static RenderTexture GetOrCreateRenderTexture()
         {
             var rt = AssetDatabase.LoadAssetAtPath<RenderTexture>(RtPath);
             if (rt != null) return rt;
@@ -355,7 +355,7 @@ namespace PyroScan.EditorTools
             return rt;
         }
 
-        static GameObject GetOrCreateMarkerPrefab()
+        internal static GameObject GetOrCreateMarkerPrefab()
         {
             var existing = AssetDatabase.LoadAssetAtPath<GameObject>(MarkerPath);
             if (existing != null) return existing;
@@ -371,7 +371,7 @@ namespace PyroScan.EditorTools
             return prefab;
         }
 
-        static Material Mat(string name, Color color, Color? emission = null)
+        internal static Material Mat(string name, Color color, Color? emission = null)
         {
             string path = MatDir + "/" + name + ".mat";
             var m = AssetDatabase.LoadAssetAtPath<Material>(path);
@@ -391,7 +391,7 @@ namespace PyroScan.EditorTools
             return m;
         }
 
-        static GameObject Prim(PrimitiveType type, string name, Transform parent, Vector3 localPos, Vector3 localScale,
+        internal static GameObject Prim(PrimitiveType type, string name, Transform parent, Vector3 localPos, Vector3 localScale,
             Material mat, bool keepCollider = true, Vector3? euler = null)
         {
             GameObject go = GameObject.CreatePrimitive(type);
@@ -405,7 +405,7 @@ namespace PyroScan.EditorTools
             return go;
         }
 
-        static void EnsureFolder(string path)
+        internal static void EnsureFolder(string path)
         {
             if (AssetDatabase.IsValidFolder(path)) return;
             string parent = Path.GetDirectoryName(path).Replace('\\', '/');
@@ -413,7 +413,7 @@ namespace PyroScan.EditorTools
             AssetDatabase.CreateFolder(parent, Path.GetFileName(path));
         }
 
-        static void AddSceneToBuild(string path)
+        internal static void AddSceneToBuild(string path)
         {
             var scenes = EditorBuildSettings.scenes.ToList();
             scenes.RemoveAll(s => s.path == path);

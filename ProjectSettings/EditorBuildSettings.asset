@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Project/Scenes/Mission_MassifSud.unity
+    guid: 7e04bab2fc0022943b462002dca410f0
+  - enabled: 1
     path: Assets/_Project/Scenes/Rendu1_Poste.unity
     guid: e537647e919bef04c9b2364e644df468
   - enabled: 1
@@ -13,4 +16,7 @@ EditorBuildSettings:
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 4eb7b84405c72e845bb042fbd2b625df, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 88a38447cc0d8c9458f331f66c696835, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: f74fedf0f14fdb04ca67b2db510b9e50, type: 2}
   m_UseUCBPForAssetBundles: 0
